@@ -31,7 +31,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/posts', (req, res) => {
-  res.render('index');
+  Post.find({}, (err, posts) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index', { posts });
+    }
+  });
 });
 
 // New Post route

@@ -25,3 +25,7 @@ i.icon {
 	background: #ccc9c9;
 	font-size: 2.5em;
 }
+
+#delete {
+	display: inline;
+}

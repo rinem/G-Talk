@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const dotenv = require('dotenv').config();
 
 const app = express();
@@ -10,6 +11,9 @@ app.set('view engine', 'ejs');
 
 // BodyParser
 app.use(express.urlencoded({ extended: true }));
+
+// Method Override
+app.use(methodOverride('_method'));
 
 // DB config
 const db = process.env.DB_URL;
@@ -54,6 +58,50 @@ app.post('/posts', (req, res) => {
     } else {
       res.redirect('/posts');
       console.log(newPost);
+    }
+  });
+});
+
+// Show Post Route
+app.get('/posts/:id', (req, res) => {
+  Post.findById(req.params.id, (err, foundPost) => {
+    if (err) {
+      res.redirect('/');
+    } else {
+      res.render('show', { post: foundPost });
+    }
+  });
+});
+
+// Edit post route
+app.get('/posts/:id/edit', (req, res) => {
+  Post.findById(req.params.id, (err, foundPost) => {
+    if (err) {
+      res.redirect('/posts');
+    } else {
+      res.render('edit', { post: foundPost });
+    }
+  });
+});
+
+// Update Post route
+app.put('/posts/:id', (req, res) => {
+  Post.findByIdAndUpdate(req.params.id, req.body.post, (err, updatedPost) => {
+    if (err) {
+      res.redirect('/');
+    } else {
+      res.redirect(`/posts/${req.params.id}`);
+    }
+  });
+});
+
+// Delete Post route
+app.delete('/posts/:id', (req, res) => {
+  Post.findByIdAndRemove(req.params.id, err => {
+    if (err) {
+      res.redirect('/posts');
+    } else {
+      res.redirect('/posts');
     }
   });
 });

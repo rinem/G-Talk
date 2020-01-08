@@ -1,0 +1,23 @@
+{
+	"name": "crud-app",
+	"version": "1.0.0",
+	"description": "A simple crud app in Node",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"dev": "nodemon app.js"
+	},
+	"keywords": [],
+	"author": "Roshan Mishra",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^8.2.0",
+		"ejs": "^3.0.1",
+		"express": "^4.17.1",
+		"method-override": "^3.0.0",
+		"mongoose": "^4.13.20"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2"
+	}
+}

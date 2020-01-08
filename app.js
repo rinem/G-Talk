@@ -20,8 +20,15 @@ mongoose
   .then(() => console.log('DB connected..!'))
   .catch(err => console.log(err));
 
+// Load Post model
+const Post = require('./models/Post');
+
 app.get('/posts', (req, res) => {
   res.render('index');
+});
+
+app.get('/', (req, res) => {
+  res.redirect('/posts');
 });
 
 const PORT = process.env.PORT || 5000;

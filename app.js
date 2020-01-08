@@ -23,12 +23,33 @@ mongoose
 // Load Post model
 const Post = require('./models/Post');
 
+// Routes
+
+// Get Posts route
+app.get('/', (req, res) => {
+  res.redirect('/posts');
+});
+
 app.get('/posts', (req, res) => {
   res.render('index');
 });
 
-app.get('/', (req, res) => {
-  res.redirect('/posts');
+// New Post route
+app.get('/posts/new', (req, res) => {
+  res.render('new');
+});
+
+// Create Posts route
+app.post('/posts', (req, res) => {
+  Post.create(req.body.post, (err, newPost) => {
+    if (err) {
+      res.render('new');
+      console.log(newPost);
+    } else {
+      res.redirect('/posts');
+      console.log(newPost);
+    }
+  });
 });
 
 const PORT = process.env.PORT || 5000;

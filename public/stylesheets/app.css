@@ -1,31 +1,31 @@
 body {
-	background: #2b2b2b;
+    background: #c4c4c4;
 }
 
 .container.main {
-	margin-top: 7em;
+    margin-top: 7em;
 }
 
 i.icon {
-	font-size: 2.5em;
+    font-size: 2.5em;
 }
 
 .ui.segment {
-	background: #cccccc;
-	margin-top: 50px !important;
-	border-radius: 0%;
+    background: #fffefe;
+    margin-top: 50px !important;
+    border-radius: 0%;
 }
 
 .ui.main.text.container {
-	background: #ccc9c9;
-	border-radius: 0.28rem;
+    background: #fffdfd;
+    border-radius: 0.28rem;
 }
 
 .ui.huge.header.center.aligned {
-	background: #ccc9c9;
-	font-size: 2.5em;
+    background: #fffefe;
+    font-size: 2.5em;
 }
 
 #delete {
-	display: inline;
+    display: inline;
 }
